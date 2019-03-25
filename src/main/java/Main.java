@@ -4,25 +4,15 @@ public class Main {
     public static void main(String[] args) {
 
           int[] num = new int[3];
+          int[] player = new int[3];
           num = makeNumber();
-          for(int i=0;i<num.length;i++){
-              System.out.print(num[i]);
-          }
-
-//        Scanner sc = new Scanner(System.in);
-//
-//        int page = sc.nextInt();
-//        int[] arr = new int[10];
-//
-//        arr = book(page,arr);
-//        for(int i=0;i<10;i++) {
-//            System.out.print(arr[i]+" ");
-//        }
+          player = playerNumber();
+          
     }
 
-    public static int[] makeNumber()//정수형 배열 리턴하는 메소드
+    public static int[] makeNumber()
     {
-        int temp[] = new int[3]; //배열 생성
+        int temp[] = new int[3];
         for(int i=0;i<temp.length;i++)
         {
             temp[i]  = (int)(Math.random()*9)+1;
@@ -32,7 +22,20 @@ public class Main {
                 }
             }
         }
-        return temp;//배열리턴
+        return temp;
+    }
+
+    public static int[] playerNumber()
+    {
+        int temp[] = new int[3];
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        for(int i=temp.length-1;i>=0;i--)
+        {
+            temp[i] = num%10;
+            num = num/10;
+        }
+        return temp;
     }
 }
 
