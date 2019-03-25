@@ -7,10 +7,36 @@ public class Main {
           int[] player;
           int[] result;
 
-          num = makeNumber();
-          player = playerNumber();
-          result = result(num,player);
-          
+          while(true){
+              num = makeNumber();
+              while(true){
+                  player = playerNumber();
+                  result = result(num,player);
+                  if(result[0]==0 && result[1]==0){
+                      System.out.println("낫싱");
+                  }
+                  else if(result[0]==0) {
+                      System.out.printf("%d볼\n",result[1]);
+                  }
+                  else if(result[1]==0) {
+                      System.out.printf("%d스트라이크\n",result[0]);
+                      if(result[0]==3){
+                          System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                          break;
+                      }
+                  }
+                  else{
+                      System.out.printf("%d스트라이크 %d볼\n",result[0], result[1]);
+                  }
+              }
+              System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+              Scanner sc = new Scanner(System.in);
+              int tmp = sc.nextInt();
+              if(tmp == 1)
+                  ;
+              else if(tmp ==2)
+                  break;
+          }
     }
 
     public static int[] makeNumber()
