@@ -3,10 +3,13 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-          int[] num = new int[3];
-          int[] player = new int[3];
+          int[] num;
+          int[] player;
+          int[] result;
+
           num = makeNumber();
           player = playerNumber();
+          result = result(num,player);
           
     }
 
@@ -29,6 +32,7 @@ public class Main {
     {
         int temp[] = new int[3];
         Scanner sc = new Scanner(System.in);
+        System.out.print("숫자를 입력해주세요 : ");
         int num = sc.nextInt();
         for(int i=temp.length-1;i>=0;i--)
         {
@@ -36,6 +40,23 @@ public class Main {
             num = num/10;
         }
         return temp;
+    }
+    public static int[] result(int[] num, int[] player){
+        int result[] = new int[2];
+        //result[0] : 스트라이크, result[1] : 볼
+        for(int i=0; i<3; i++){
+            if(num[i]==player[i])
+                result[0] += 1;
+            else{
+                for(int j=0;j<num.length;j++){
+                    if(player[i] == num[j]){
+                        result[1] += 1;
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
     }
 }
 
